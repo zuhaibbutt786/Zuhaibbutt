@@ -45,6 +45,10 @@ module.exports = {
           800: '#166534',
           900: '#14532d',
         },
+        muted: {
+          DEFAULT: '#64748b',
+          foreground: '#64748b',
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
