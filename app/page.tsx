@@ -424,7 +424,7 @@ export default function ResumePage() {
               className="p-2 rounded-full bg-blue-500/20 dark:bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 dark:border-blue-500/30 hover:bg-blue-500/40 dark:hover:bg-blue-500/40 transition-all duration-300 shadow-lg hover:shadow-xl"
               title="LinkedIn Profile"
             >
-              <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <Linkedin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             </motion.a>
             
             {/* Fiverr Button */}
@@ -448,6 +448,31 @@ export default function ResumePage() {
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-6v2h2v-2h1a2.5 2.5 0 1 0 0-5h-4a.5.5 0 1 1 0-1h5a2.5 2.5 0 0 1 0 5h-1zm-6-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
               </svg>
             </motion.a>
+            
+            {/* Small Stats Section */}
+            <div className="flex items-center gap-3 ml-2 pl-3 border-l border-white/20 dark:border-slate-700/20">
+              {[
+                { number: "50+", label: "Projects", icon: Boxes },
+                { number: "500+", label: "Students", icon: Users },
+                { number: "5+", label: "Years", icon: TrendingUp }
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.3 + (i * 0.1) }}
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center"
+                >
+                  <div className="text-xs font-bold text-primary-600 dark:text-primary-400">
+                    {stat.number}
+                  </div>
+                  <div className="text-xs text-slate-600 dark:text-slate-400">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
           
           <motion.div 
@@ -496,8 +521,28 @@ export default function ResumePage() {
               </div>
             </motion.div>
             
-            <Button onClick={() => window.print()} variant="outline" className="rounded-xl text-xs px-3 py-2 h-9">
+            <Button 
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/CV_Zuhaib_Hussain_Butt.pdf'; // Update this to your PDF filename
+                link.download = 'CV_Zuhaib_Hussain_Butt.pdf'; // Update this to your PDF filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }} 
+              variant="outline" 
+              className="rounded-xl text-xs px-3 py-2 h-9"
+            >
               <Download className="w-3 h-3 mr-1"/>PDF
+            </Button>
+            <Button 
+              onClick={() => window.print()} 
+              variant="outline" 
+              className="rounded-xl text-xs px-3 py-2 h-9"
+            >
+              <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>Print
             </Button>
             <Button variant="gradient" className="rounded-xl text-xs px-3 py-2 h-9">
               <Mail className="w-3 h-3 mr-1"/>Hire
@@ -591,6 +636,31 @@ export default function ResumePage() {
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-6v2h2v-2h1a2.5 2.5 0 1 0 0-5h-4a.5.5 0 1 1 0-1h5a2.5 2.5 0 0 1 0 5h-1zm-6-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
               </svg>
             </motion.a>
+          </div>
+          
+          {/* Mobile Stats Section */}
+          <div className="flex justify-center gap-6 mt-3">
+            {[
+              { number: "50+", label: "Projects", icon: Boxes },
+              { number: "500+", label: "Students", icon: Users },
+              { number: "5+", label: "Years", icon: TrendingUp }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.3 + (i * 0.1) }}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <div className="text-sm font-bold text-primary-600 dark:text-primary-400">
+                  {stat.number}
+                </div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -952,46 +1022,7 @@ export default function ResumePage() {
           </div>
         </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 3.0 }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-3"
-          >
-            <motion.span
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-sm font-medium text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-800/80 px-4 py-2 rounded-full backdrop-blur-sm border border-white/30 dark:border-slate-700/30 shadow-lg"
-            >
-              Scroll to explore more
-            </motion.span>
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative"
-            >
-              <div className="w-8 h-12 border-2 border-slate-400 dark:border-slate-500 rounded-full flex justify-center relative overflow-hidden bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg">
-                <motion.div
-                  animate={{ y: [0, 16, 0] }}
-                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-2 h-4 bg-slate-500 dark:bg-slate-400 rounded-full mt-2"
-                />
-                {/* Enhanced glow effect */}
-                <motion.div
-                  animate={{ opacity: [0, 0.8, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="absolute inset-0 bg-gradient-to-b from-slate-400/30 dark:from-slate-500/30 to-transparent rounded-full"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+
       </section>
 
       {/* Services Section */}
