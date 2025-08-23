@@ -99,6 +99,74 @@ export default function ResumePage() {
   const [profileImageLoaded, setProfileImageLoaded] = useState(false);
   const [profileImageError, setProfileImageError] = useState(false);
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zuhaib Hussain Butt",
+    "jobTitle": "Senior Data Scientist & AI Engineer",
+    "description": "AI Expert, Data Science Specialist, Computer Vision Expert, NLP Expert, BI Engineer, Factory Automation Expert, Data Scraping Specialist. Serving clients from USA, UK, Germany, European Union, Africa, Dubai, UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman, and all Gulf countries.",
+    "url": "https://zuhaib-hussain-butt.github.io/resume/",
+    "sameAs": [
+      "https://www.linkedin.com/in/zuhaib-hussain-butt-6628141a4",
+      "https://www.fiverr.com/zuhaibbutt3",
+      "https://github.com/zuhaib-hussain"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Gujranwala",
+      "addressRegion": "Punjab",
+      "addressCountry": "Pakistan"
+    },
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "Natural Language Processing",
+      "LLMs",
+      "RAG Systems",
+      "Data Science",
+      "Big Data",
+      "Data Analytics",
+      "Business Intelligence",
+      "Power BI",
+      "Tableau",
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "Data Scraping",
+      "Automation",
+      "n8n",
+      "Factory Automation",
+      "Cloud Computing",
+      "Azure",
+      "AWS"
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Data Scientist",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Gujranwala, Pakistan"
+      }
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Worldwide",
+      "description": "Serving clients from USA, UK, Germany, European Union, Africa, Dubai, UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman, and all Gulf countries"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "GIFT University",
+      "jobTitle": "Lecturer in Data Science"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "University of Engineering & Technology, Lahore"
+    }
+  };
+
   useEffect(() => {
     // Check if profile image exists and handle loading
     const img = new Image();
@@ -344,7 +412,16 @@ export default function ResumePage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-slate-900 dark:text-slate-100">
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-slate-900 dark:text-slate-100">
       {/* Header */}
       <header className="sticky top-0 z-40 glass-effect header-glass border-b border-slate-200/20 dark:border-slate-700/20">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 overflow-hidden">
@@ -1977,5 +2054,6 @@ export default function ResumePage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

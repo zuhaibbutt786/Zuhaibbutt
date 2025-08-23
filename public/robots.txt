@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zuhaib-hussain-butt.github.io/resume/sitemap.xml
+
+# Allow crawling of all important pages
+Allow: /about
+Allow: /skills
+Allow: /experience
+Allow: /projects
+Allow: /testimonials
+Allow: /visualization
+Allow: /education
+Allow: /certifications
+Allow: /publications
+Allow: /honors
+Allow: /contact
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
+
+# Disallow crawling of unnecessary files
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /sitemap.xml
