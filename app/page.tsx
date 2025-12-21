@@ -529,9 +529,10 @@ export default function ResumePage() {
             {/* Small Stats Section */}
             <div className="flex items-center gap-3 ml-2 pl-3 border-l border-white/20 dark:border-slate-700/20">
               {[
-                { number: "50+", label: "Projects", icon: Boxes },
-                { number: "500+", label: "Students", icon: Users },
-                { number: "5+", label: "Years", icon: TrendingUp }
+                { number: "150+", label: "Projects", icon: Boxes },
+                { number: "1500+", label: "Students", icon: Users },
+                { number: "5+", label: "Years", icon: TrendingUp },
+                { number: "RAYAN AI Winner", label: "Years", icon: TrendingUp }
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -1960,6 +1961,14 @@ export default function ResumePage() {
         <SectionTitle icon={Award} title="Honors & Volunteering" subtitle="Speaking engagements, workshops, and community contributions" />
         <div className="grid md:grid-cols-2 gap-6">
           {[
+
+            {
+              title: "Rayan AI contest finalist",
+              organization: "Rayan global",
+              year: "2025",
+              description: "Got 8th position out of ~2800(700 teams) worldwide"
+            },
+      
             {
               title: "Business Intelligence Talk",
               organization: "GIFT University",
