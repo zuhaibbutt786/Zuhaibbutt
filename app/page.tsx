@@ -716,32 +716,77 @@ export default function ResumePage() {
             </motion.a>
           </div>
           
-          {/* Mobile Stats Section */}
-          <div className="flex justify-center gap-6 mt-3">
-            {[
-              { number: "50+", label: "Projects", icon: Boxes },
-              { number: "500+", label: "Students", icon: Users },
-              { number: "5+", label: "Years", icon: TrendingUp }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.3 + (i * 0.1) }}
-                whileHover={{ scale: 1.05 }}
-                className="text-center"
-              >
-                <div className="text-sm font-bold text-primary-600 dark:text-primary-400">
-                  {stat.number}
-                </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+{/* Mobile Stats Section */}
+<div className="flex justify-center gap-6 mt-3 flex-wrap">
+  {[
+    { number: "50+", label: "Projects", icon: Boxes },
+    { number: "500+", label: "Students", icon: Users },
+    { number: "5+", label: "Years", icon: TrendingUp },
+    { 
+      number: "RAYAN AI", 
+      label: "Winner", 
+      icon: Trophy,  // Assuming you have a Trophy icon from lucide-react or similar
+      isSpecial: true 
+    }
+  ].map((stat, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 1.3 + (i * 0.1) }}
+      whileHover={{ scale: 1.1 }}
+      className={`text-center px-6 py-4 rounded-xl shadow-lg bg-white dark:bg-gray-800 ${
+        stat.isSpecial ? 'border-4 border-yellow-400 bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800' : ''
+      }`}
+    >
+      <div className="flex flex-col items-center">
+        {stat.isSpecial ? (
+          <>
+            {/* Attention-grabbing animation for the special card */}
+            <motion.div
+              animate={{ 
+                rotate: [0, -10, 10, -10, 10, 0],
+                scale: [1, 1.2, 1.2, 1.2, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 1.5, 
+                repeat: Infinity, 
+                repeatDelay: 3 
+              }}
+            >
+              <stat.icon className="w-12 h-12 text-yellow-600 dark:text-yellow-300 mb-2" />
+            </motion.div>
+            
+            {/* Gold trophy picture for visual impact */}
+            <img 
+              src="https://static.vecteezy.com/system/resources/previews/070/941/240/non_2x/golden-trophy-icon-awards-2023-vector.jpg" 
+              alt="Golden Trophy - RAYAN AI Winner" 
+              className="w-24 h-24 object-contain mb-4 rounded-lg shadow-md"
+            />
+            
+            {/* Sparkle effect for extra attention */}
+            <motion.div
+              className="absolute -top-2 -right-2 text-4xl"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            >
+              ✨
+            </motion.div>
+          </>
+        ) : (
+          <stat.icon className="w-10 h-10 text-primary mb-2" />
+        )}
+        
+        <p className={`text-2xl font-bold ${stat.isSpecial ? 'text-yellow-700 dark:text-yellow-200' : ''}`}>
+          {stat.number}
+        </p>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+          {stat.label}
+        </p>
       </div>
+    </motion.div>
+  ))}
+</div>
 
       {/* Hero Section */}
       <section id="about" className="max-w-7xl mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden content-section hero-section">
